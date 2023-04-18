@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="travelOnTip_Routes_implementationFlow" doc:id="b45a1627-f514-4d01-8ec1-24cb2bd5ca23" >
+		<ee:transform doc:name="Transform Message" doc:id="75338556-b368-4a77-ac09-7d6d28f648dc" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+[{
+	"companyName": "TravelOnTop",
+	"originLocation": {
+		"locationCode": "SFE"
+	},
+	"destinationLocation": {
+		"locationCode": "RSD"
+	}
+},
+  {
+	"companyName": "TravelOnTop",
+	"originLocation": {
+		"locationCode": "WTD"
+	},
+	"destinationLocation": {
+		"locationCode": "OHU"
+	}
+},
+  {
+	"companyName": "TravelOnTop",
+	"originLocation": {
+		"locationCode": "SFE"
+	},
+	"destinationLocation": {
+		"locationCode": "RSD"
+	}
+},
+  {
+	"companyName": "TravelOnTop",
+	"originLocation": {
+		"locationCode": "WTD"
+	},
+	"destinationLocation": {
+		"locationCode": "OHU"
+	}
+}]]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="17331400-87a0-4d48-8e29-f3e120b6d7b5" message="travelOnTop route subflow excuted for #[vars.transactionId]"/>
+	</flow>
+</mule>
